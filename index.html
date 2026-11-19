@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Assignment 8</title>
+    </head>
+<body>
+
+<h1>PROMISE FUNCTION</h1>
+<pre>
+Q.Bank Account Withdrawal
+
+Create a Promise for withdrawing money.
+
+Conditions:
+- Account balance = Rs. 10,000
+- Withdrawal amount = Rs. 7,000
+- If balance is sufficient, resolve the Promise.
+- Otherwise, reject the Promise.
+Use .then() and .catch() to display the result.
+
+Q. Online Exam Result
+
+Create a Promise that checks student results.
+- Marks 50 or above: Pass.
+- Marks below 50: Fail.
+- Marks greater than 100 or less than 0: Invalid marks.
+Handle the result using .then() and .catch().
+
+Q. Product Delivery System
+
+Create a Promise for an online shopping delivery.
+
+Use setTimeout() to simulate a 3-second delivery process.
+- After 3 seconds, resolve with "Product Delivered Successfully".
+- If delivery is unsuccessful, reject with "Delivery Failed".
+Display the result using .then() and .catch().
+
+Q. Promise Chaining
+
+Create a Promise that performs these operations:
+1. Start with a number: 10.
+2. Add 20.
+3. Multiply the result by 2.
+4. Subtract 5.
+5. Display the final result.
+Use Promise chaining with multiple .then() methods.
+</pre>
+</body>
+<script>
+//question 1
+let balance = 10000;
+let withdraw = 7000;
+
+let bank = new Promise((resolve, reject) => {
+
+    if (balance >= withdraw) {
+        resolve("Withdrawal Successful");
+    } else {
+        reject("Insufficient Balance");
+    }
+
+});
+
+bank
+.then((result) => {
+    console.log(result);
+})
+.catch((error) => {
+    console.log(error);
+});    
+//question2
+
+let marks = 75;
+
+let exam = new Promise((resolve, reject) => {
+
+    if (marks < 0 || marks > 100) {
+        reject("Invalid Marks");
+    }
+    else if (marks >= 50) {
+        resolve("Pass");
+    }
+    else {
+        resolve("Fail");
+    }
+
+});
+
+exam
+.then((result) => {
+    console.log(result);
+})
+.catch((error) => {
+    console.log(error);
+});
+//question 3
+
+let delivery = new Promise((resolve, reject) => {
+
+    setTimeout(() => {
+
+        let success = true;
+
+        if (success) {
+            resolve("Product Delivered Successfully");
+        }
+        else {
+            reject("Delivery Failed");
+        }
+
+    }, 3000);
+
+});
+
+delivery
+.then((result) => {
+    console.log(result);
+})
+.catch((error) => {
+    console.log(error);
+});
+//question 4
+
+let calculation = new Promise((resolve, reject) => {
+
+    resolve(10);
+
+});
+
+calculation
+.then((result) => {
+    return result + 20;
+})
+.then((result) => {
+    return result * 2;
+})
+.then((result) => {
+    return result - 5;
+})
+.then((result) => {
+    console.log("Final Result: " + result);
+})
+.catch((error) => {
+    console.log(error);
+});
+</script>
+</html>
